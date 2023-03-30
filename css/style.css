@@ -1,0 +1,108 @@
+@import './variables';
+@import './mixin';
+
+/*-------- CSS RESET ---*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    letter-spacing: 3px;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*-------- My Styles ---*/
+
+.main{
+    @include flex(flex, column, flex-start, center);
+    height: 100vh;
+    padding: $largPadding;
+    background: $darkBlueColor;
+    .counter-box{
+        @include flex(flex, column, center, center);
+        @include border(1px, solid, $darkCyanColor, 8px);
+        padding: 3rem;
+        width:50vw;
+        h2{
+            font-size: $largFont;
+            margin-bottom: 2rem;
+        }
+        p{
+            color: $gray;
+            font-size: $smallFont;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        & > div{
+            @include flex(flex, row, center, center);
+        }
+        .btn{
+            @include button(.5rem 1.2rem, $green);
+            @include border(1px, solid, $green, 3px);
+            margin: 0 10px;
+            min-width: 100px;
+            font-weight: bold;
+            color: $white;
+            transition: .2s all ease-in-out;
+            cursor: pointer;
+            &:hover{
+                background-color: $greenHover;
+                border-color: $greenHover;
+            }
+            &.minus-btn{
+                @include button(.5rem 1.2rem, $red);
+                @include border(1px, solid, $red, 3px);
+                &:hover{
+                    background-color: $redHover;
+                    border-color: $redHover;
+                }
+            }
+        }
+        span{
+            font-size: $largFont;
+            font-weight: bold;
+        }
+        #alert{
+            margin-top: 1rem;
+            @include border(1px, dashed, $darkCyanColor, 3px);
+            padding: .5rem;
+            visibility: hidden;
+            transition: .2s all ease-in-out;
+        }
+    }
+}
